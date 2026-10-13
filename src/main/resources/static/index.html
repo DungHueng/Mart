@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý bán hàng tạp hóa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">F</div>
+            <div>
+                <h2>FreshMart</h2>
+                <small>GROCERY MANAGEMENT</small>
+            </div>
+        </div>
+
+        <div class="store">
+            <span class="store-icon">⌂</span>
+            <div>
+                <b>Cửa hàng trung tâm</b>
+                <small>Chi nhánh Hà Nội</small>
+            </div>
+        </div>
+
+        <p class="nav-title">TỔNG QUAN</p>
+        <nav>
+            <a class="nav-item active" href="#dashboard">▦ <span>Tổng quan</span></a>
+            <a class="nav-item" href="#pos">▣ <span>Bán hàng</span></a>
+            <a class="nav-item" href="#orders">☷ <span>Đơn hàng</span></a>
+            <a class="nav-item" href="#products">▤ <span>Sản phẩm</span></a>
+            <a class="nav-item" href="#inventory">▥ <span>Kho hàng</span></a>
+            <a class="nav-item" href="#customers">♙ <span>Khách hàng</span></a>
+        </nav>
+
+        <p class="nav-title">QUẢN LÝ</p>
+        <nav>
+            <a class="nav-item" href="#reports">▧ <span>Báo cáo doanh thu</span></a>
+            <a class="nav-item" href="#suppliers">♧ <span>Nhà cung cấp</span></a>
+            <a class="nav-item" href="#settings">⚙ <span>Cài đặt</span></a>
+        </nav>
+
+        <div class="profile">
+            <div class="avatar">AD</div>
+            <div><b>Admin Hoàng</b><small>Quản trị viên</small></div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="breadcrumb">Trang chủ / <b id="pageTitle">Tổng quan</b></div>
+            <div class="top-right">
+                <input id="search" type="search" placeholder="Tìm sản phẩm...">
+                <button class="icon-btn" onclick="notify('Bạn không có thông báo mới')">♧</button>
+                <span class="date">◷ 13/10/2026</span>
+            </div>
+        </header>
+
+        <section id="dashboard" class="page">
+            <div class="welcome">
+                <div>
+                    <p class="eyebrow">● CỬA HÀNG ĐANG HOẠT ĐỘNG</p>
+                    <h1>Chào buổi sáng, Admin ✦</h1>
+                    <p class="muted">Đây là tình hình kinh doanh của cửa hàng hôm nay.</p>
+                </div>
+                <button class="primary" onclick="navigate('pos')">＋ Tạo đơn hàng</button>
+            </div>
+
+            <div class="stats">
+                <article class="stat-card">
+                    <div class="stat-label">Doanh thu hôm nay <span class="stat-icon green">₫</span></div>
+                    <h2>8.420.000 ₫</h2>
+                    <p><strong class="positive">↗ 12,8%</strong> so với hôm qua</p>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-label">Đơn hàng <span class="stat-icon blue">▣</span></div>
+                    <h2 id="orderCount">126</h2>
+                    <p><strong class="positive">↗ 8,2%</strong> so với hôm qua</p>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-label">Giá trị đơn trung bình <span class="stat-icon purple">◈</span></div>
+                    <h2>66.825 ₫</h2>
+                    <p><strong class="positive">↗ 4,6%</strong> so với hôm qua</p>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-label">Sản phẩm sắp hết <span class="stat-icon orange">!</span></div>
+                    <h2>08 mặt hàng</h2>
+                    <p><strong class="warning">Cần nhập thêm</strong></p>
+                </article>
+            </div>
+
+            <div class="dashboard-grid">
+                <section class="panel">
+                    <div class="panel-heading">
+                        <div><h3>Doanh thu bán hàng</h3><p class="muted">Theo dõi doanh thu trong tuần</p></div>
+                        <select id="period">
+                            <option value="week">7 ngày gần đây</option>
+                            <option value="month">Tháng này</option>
+                        </select>
+                    </div>
+                    <div class="chart-total"><b id="chartTotal">32.680.000 ₫</b><span class="positive">↗ 10,5%</span></div>
+                    <div class="chart">
+                        <div class="y-axis"><span>10 tr</span><span>8 tr</span><span>6 tr</span><span>4 tr</span><span>2 tr</span><span>0</span></div>
+                        <div class="chart-content">
+                            <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+                            <div class="bars">
+                                <div><i style="height:48%"></i><span>T2</span></div>
+                                <div><i style="height:66%"></i><span>T3</span></div>
+                                <div><i style="height:53%"></i><span>T4</span></div>
+                                <div><i style="height:77%"></i><span>T5</span></div>
+                                <div><i style="height:62%"></i><span>T6</span></div>
+                                <div><i style="height:90%"></i><span>T7</span></div>
+                                <div><i class="today" style="height:72%"></i><span>CN</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-heading">
+                        <div><h3>Danh mục bán chạy</h3><p class="muted">Tỷ trọng doanh thu hôm nay</p></div>
+                    </div>
+                    <div class="donut-wrap">
+                        <div class="donut"><div><b>8,42 tr</b><small>Tổng doanh thu</small></div></div>
+                    </div>
+                    <div class="legend">
+                        <p><i class="dot d1"></i>Thực phẩm <b>38%</b></p>
+                        <p><i class="dot d2"></i>Đồ uống <b>27%</b></p>
+                        <p><i class="dot d3"></i>Đồ gia dụng <b>20%</b></p>
+                        <p><i class="dot d4"></i>Khác <b>15%</b></p>
+                    </div>
+                </section>
+            </div>
+
+            <section class="panel">
+                <div class="panel-heading">
+                    <div><h3>Đơn hàng gần đây</h3><p class="muted">Các giao dịch mới nhất tại cửa hàng</p></div>
+                    <button class="link-btn" onclick="navigate('orders')">Xem tất cả →</button>
+                </div>
+                <div class="table-scroll">
+                    <table>
+                        <thead><tr><th>MÃ ĐƠN</th><th>KHÁCH HÀNG</th><th>THỜI GIAN</th><th>SỐ MẶT HÀNG</th><th>TỔNG TIỀN</th><th>TRẠNG THÁI</th></tr></thead>
+                        <tbody id="recentOrders"></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <section id="pos" class="page hidden">
+            <div class="welcome">
+                <div><p class="eyebrow">ĐIỂM BÁN HÀNG</p><h1>Tạo đơn hàng mới</h1><p class="muted">Chọn sản phẩm để thêm vào giỏ hàng.</p></div>
+            </div>
+            <div class="pos-layout">
+                <section class="panel">
+                    <div class="panel-heading">
+                        <h3>Sản phẩm</h3>
+                        <select id="category">
+                            <option value="all">Tất cả danh mục</option>
+                            <option>Thực phẩm</option><option>Đồ uống</option><option>Gia dụng</option>
+                        </select>
+                    </div>
+                    <div id="productGrid" class="product-grid"></div>
+                </section>
+                <section class="panel cart">
+                    <h3>Giỏ hàng <span class="count" id="cartCount">0</span></h3>
+                    <div id="cartItems" class="cart-items">Chưa có sản phẩm.</div>
+                    <div class="cart-total"><span>Tổng thanh toán</span><b id="cartTotal">0 ₫</b></div>
+                    <label for="customer">Tên khách hàng</label>
+                    <input id="customer" class="full-input" placeholder="Khách lẻ">
+                    <button class="primary full" onclick="checkout()">Thanh toán đơn hàng →</button>
+                </section>
+            </div>
+        </section>
+
+        <section id="orders" class="page hidden">
+            <div class="welcome"><div><p class="eyebrow">GIAO DỊCH</p><h1>Quản lý đơn hàng</h1><p class="muted">Theo dõi giao dịch tại cửa hàng.</p></div><button class="primary" onclick="navigate('pos')">＋ Tạo đơn hàng</button></div>
+            <section class="panel"><h3>Tất cả đơn hàng</h3><div class="table-scroll"><table><thead><tr><th>MÃ ĐƠN</th><th>KHÁCH HÀNG</th><th>THỜI GIAN</th><th>SỐ MẶT HÀNG</th><th>TỔNG TIỀN</th><th>TRẠNG THÁI</th></tr></thead><tbody id="allOrders"></tbody></table></div></section>
+        </section>
+
+        <section id="products" class="page hidden">
+            <div class="welcome"><div><p class="eyebrow">DANH MỤC HÀNG HÓA</p><h1>Quản lý sản phẩm</h1><p class="muted">Theo dõi giá bán và tồn kho các mặt hàng.</p></div><button class="primary" onclick="notify('Chức năng thêm sản phẩm cần kết nối Backend')">＋ Thêm sản phẩm</button></div>
+            <section class="panel"><h3>Danh sách sản phẩm</h3><div class="table-scroll"><table><thead><tr><th>SẢN PHẨM</th><th>MÃ SKU</th><th>DANH MỤC</th><th>GIÁ BÁN</th><th>TỒN KHO</th></tr></thead><tbody id="productTable"></tbody></table></div></section>
+        </section>
+
+        <section id="inventory" class="page hidden">
+            <div class="welcome"><div><p class="eyebrow">QUẢN LÝ TỒN KHO</p><h1>Kho hàng</h1><p class="muted">Theo dõi số lượng hàng tồn và mặt hàng cần nhập thêm.</p></div></div>
+            <section class="panel"><h3>Cảnh báo tồn kho</h3><div class="table-scroll"><table><thead><tr><th>SẢN PHẨM</th><th>MÃ SKU</th><th>TỒN KHO</th><th>TRẠNG THÁI</th></tr></thead><tbody id="inventoryTable"></tbody></table></div></section>
+        </section>
+
+        <section id="customers" class="page hidden"><div class="welcome"><div><p class="eyebrow">KHÁCH HÀNG</p><h1>Quản lý khách hàng</h1><p class="muted">Thông tin và lịch sử mua hàng sẽ được tích hợp với Backend.</p></div></div><section class="panel empty"><h3>♙</h3><b>Khu vực quản lý khách hàng</b><p class="muted">Giao diện sẵn sàng kết nối API khách hàng.</p></section></section>
+        <section id="reports" class="page hidden"><div class="welcome"><div><p class="eyebrow">PHÂN TÍCH KINH DOANH</p><h1>Báo cáo doanh thu</h1><p class="muted">Tổng hợp kết quả kinh doanh theo thời gian.</p></div></div><section class="panel empty"><h3>▧</h3><b>Báo cáo chi tiết</b><p class="muted">Có thể bổ sung sau khi kết nối dữ liệu thật.</p></section></section>
+        <section id="suppliers" class="page hidden"><div class="welcome"><div><p class="eyebrow">NHẬP HÀNG</p><h1>Nhà cung cấp</h1><p class="muted">Quản lý các đối tác cung cấp hàng hóa.</p></div><button class="primary" onclick="notify('Chức năng này sẽ kết nối Backend')">＋ Thêm nhà cung cấp</button></div></section>
+        <section id="settings" class="page hidden"><div class="welcome"><div><p class="eyebrow">HỆ THỐNG</p><h1>Cài đặt</h1><p class="muted">Thiết lập thông tin cửa hàng.</p></div></div><section class="panel settings"><label>Tên cửa hàng</label><input value="FreshMart - Cửa hàng trung tâm"><label>Địa chỉ</label><input value="Hà Nội, Việt Nam"><button class="primary" onclick="notify('Đã lưu cài đặt demo')">Lưu thay đổi</button></section></section>
+
+        <footer>© 2026 FreshMart · Hệ thống quản lý bán hàng tạp hóa <span>● Đang hoạt động</span></footer>
+    </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
